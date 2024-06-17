@@ -1,0 +1,117 @@
+body {
+  background: #1B1C1D;
+  font-family: sans-serif;
+}
+
+.image-container {
+  background-color: rgba(0, 255, 0, 0.5);
+  background-blend-mode: overlay;
+}
+
+.stc-logo {
+  width: 10%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 40px;
+}
+
+
+.map-icon {
+  width: 70px;
+  height: 70px;
+}
+
+.header-container {
+  margin-left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.map-header {
+  color: #05b998;
+  font-size: 4rem;
+}
+
+.map-icon {
+  color: #05b998;
+}
+
+.link-list-container {
+  margin-left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  margin-top: 30px;
+}
+
+.link-list-header {
+  border: 2px solid #5e5d5d;
+  padding-left: 20px;
+}
+.link-list-header h3 {
+  color: #bcbfc5;
+}
+
+.link-list-element {
+  text-align: center;
+  height: 100px;
+  margin-top: 3px;
+  vertical-align: middle;
+  line-height: 100px;
+  border-bottom: #222;
+  border-bottom: 1px solid #5e5d5d;
+  border-right: 1px solid #5e5d5d;
+  border-left: 1px solid #5e5d5d;
+}
+
+.list-element-img {
+  width: 130px;
+  height: 92px;
+  float: left;
+  margin-left: 10px;
+  margin-top: 4px;
+}
+
+.link-list-element a {
+  text-decoration: none;
+  color: #bcbfc5;
+
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

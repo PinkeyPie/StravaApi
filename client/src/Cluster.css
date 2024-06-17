@@ -1,0 +1,19 @@
+.cluster-circle {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    background-color: black;
+    border-radius: 50%;
+    transition: .5s all;
+}
+
+.cluster-circle:hover {
+    cursor: pointer;
+    background-color: rgb(43, 42, 42);
+}
+
+.cluster-cnt {
+    font-size: 18px;
+    color: white;
+}

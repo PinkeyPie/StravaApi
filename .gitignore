@@ -1,0 +1,7 @@
+server/venv/
+server/__pycache__/
+server/test/
+.idea/
+geoclassifier/cmake-build-debug/
+geoclassifier/tests/
+geoclassifier/.idea/

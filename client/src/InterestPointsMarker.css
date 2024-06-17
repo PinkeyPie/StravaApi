@@ -1,0 +1,36 @@
+.maplibregl-popup {
+    width: 170px;
+    position: absolute !important;
+    left: 70px !important;
+    top: -58px !important;
+    color: white;
+}
+
+.maplibregl-popup-content {
+    background-color: #27292b !important;
+    max-height: 200px;
+    overflow: scroll;
+}
+
+.maplibregl-popup-content h5 {
+    font-size: 16px;
+}
+
+.maplibregl-popup-tip {
+    border-top-color: #27292b !important;
+    margin-left: -120px;
+}
+
+.maplibregl-popup-close-button {
+    color: white !important;
+    font-size: 18px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.sc-beySPh > svg:nth-child(1) {
+    position: absolute;
+    left: -16px;
+    top: 13px;
+
+}

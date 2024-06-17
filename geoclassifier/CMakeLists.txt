@@ -1,0 +1,55 @@
+cmake_minimum_required(VERSION 3.24)
+project(geoclassifier)
+
+SET(CMAKE_PREFIX_PATH "~/Qt/6.5.3/gcc_64/lib/cmake")
+set(PQXX /usr/local/include/pqxx)
+
+set(CMAKE_CXX_STANDARD 23)
+find_package(Qt6 REQUIRED COMPONENTS Core)
+
+MACRO(SCAN_FILES return_list input_dir extension)
+    FILE(GLOB_RECURSE new_list RELATIVE ${input_dir} ${input_dir}/*${extension})
+    SET(files_list "")
+    FOREACH (file_path ${new_list})
+        LIST(APPEND files_list ${input_dir}/${file_path})
+    ENDFOREACH ()
+    LIST(REMOVE_DUPLICATES files_list)
+    SET(${return_list} ${files_list})
+ENDMACRO()
+
+MACRO(SRC_FILE_LIST result current_dir)
+    FILE(GLOB children RELATIVE ${current_dir} ${current_dir}/*.cpp)
+    SET(src_list "")
+    FOREACH (child ${children})
+        LIST(APPEND src_list ${current_dir}/${child})
+    ENDFOREACH ()
+    LIST(REMOVE_DUPLICATES src_list)
+    SET(${result} ${src_list})
+ENDMACRO()
+
+MACRO(ADD_SOURCE_DIRECTORY SOURCES HEADERS SCAN_DIRS)
+    FOREACH(DIR ${SCAN_DIRS})
+        file(GLOB_RECURSE SRC_TEMP "${DIR}/*.cpp" "${DIR}/*.c" "${DIR}/*.cc")
+        file(GLOB_RECURSE HDR_TEMP "${DIR}/*.h" "${DIR}/*.hh" "${DIR}/*.hpp")
+        LIST(APPEND ${SOURCES} ${SRC_TEMP})
+        LIST(APPEND ${HEADERS} ${HDR_TEMP})
+    ENDFOREACH(DIR)
+ENDMACRO(ADD_SOURCE_DIRECTORY)
+
+MACRO(SRC_FILES return_list current_dir)
+    SCAN_FILES(${return_list} ${current_dir} .cpp)
+ENDMACRO()
+
+find_library(PQXX_LIB pqxx)
+find_library(PQ_LIB pq)
+
+SET(SRC_LIST "")
+SET(HEADERS_LIST "")
+ADD_SOURCE_DIRECTORY(SRC_LIST HEADERS_LIST ${CMAKE_CURRENT_SOURCE_DIR}/src)
+add_library(geoclassifier SHARED ${SRC_LIST} ${HEADERS_LIST})
+target_link_libraries(geoclassifier PRIVATE Qt6::Core
+                                    PRIVATE ${PQXX_LIB} ${PQ_LIB})
+
+add_executable(test ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp)
+target_link_libraries(test PUBLIC geoclassifier)
+target_include_directories(test PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
